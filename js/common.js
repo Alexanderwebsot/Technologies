@@ -5,6 +5,10 @@ $(document).ready(function () {
   $('.contacts-memo-img').on('click', function() {
     $('.modal-window').addClass('modal-window-active');
   })
+  $('.modal-window__btn').on('click', function() {
+    $('.modal-window').removeClass('modal-window-active');
+    return false;
+  })
   $('.header-slider-top').slick({
       infinite: false,
       slidesToShow: 1,
