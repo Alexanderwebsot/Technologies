@@ -348,6 +348,13 @@
 </footer>
 <!-- libs js -->
 <script src="js/libs.min.js"></script>
+<script>
+	let $windowWidth = window.innerWidth;
+	if ($windowWidth < 992) {
+	    $('.news-block__btn')[0].innerHTML = 'Подробнее';
+	    $('.news-block__btn')[1].innerHTML = 'Подробнее';
+	}
+</script>
 <script src="js/common.js"></script>
 </body>
 

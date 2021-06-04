@@ -1,9 +1,10 @@
 $(document).ready(function () {
-  let $windowWidth = window.innerWidth;
-  if ($windowWidth < 992) {
-      $('.news-block__btn')[0].innerHTML = 'Подробнее';
-      $('.news-block__btn')[1].innerHTML = 'Подробнее';
-  }
+  $('.modal-window__exit').on('click', function() {
+    $('.modal-window').removeClass('modal-window-active');
+  })
+  $('.contacts-memo-img').on('click', function() {
+    $('.modal-window').addClass('modal-window-active');
+  })
   $('.header-slider-top').slick({
       infinite: false,
       slidesToShow: 1,
