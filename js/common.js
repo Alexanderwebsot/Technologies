@@ -1,96 +1,87 @@
 $(document).ready(function () {
-  $('.projects-slider-wrapper').slick({
-	  infinite: true,
-	  slidesToShow: 1,
-	  slidesToScroll: 1,
-	  dots: true,
-	  prevArrow: $('.projects-arrow__l'),
-	  nextArrow: $('.projects-arrow__r')
-  });
-  $('.team-slider').slick({
+  let $windowWidth = window.innerWidth;
+  if ($windowWidth < 992) {
+      $('.news-block__btn')[0].innerHTML = 'Подробнее';
+      $('.news-block__btn')[1].innerHTML = 'Подробнее';
+  }
+  $('.header-slider-top').slick({
       infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       dots: false,
-      prevArrow: $('.projects-arrow__l'),
-      nextArrow: $('.projects-arrow__r'),
-      responsive: [
-          {
-            breakpoint: 992,
-            settings: {
-              dots: true,
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
+      prevArrow: $('.arrow__left'),
+      nextArrow: $('.arrow__right'),
     });
-  $('.projects-slider-top').slick({
-  	  infinite: false,
-  	  slidesToShow: 1,
-  	  slidesToScroll: 1,
-  	  dots: false,
-  	  arrows: false,
-    });
-  $('.projects-slid_1').on('click', function() {
-  	$('.projects-slider-top').slick('slickGoTo', 0);
-  	return false;
+  $('.header-slide').on('click', function() {
+    $('.header-slide').removeClass('header-slide-active');
+    $(this).addClass('header-slide-active');
+    let count = $(this).index('.header-slide');
+    $('.header-slider-top').slick('slickGoTo', count);
   })
-  $('.projects-slid_2').on('click', function() {
-  	$('.projects-slider-top').slick('slickGoTo', 1);
-  	return false;
+  $('.header-slider-top').on('afterChange', function(event, slick, currentSlide, nextSlide){
+    $('.header-slide').removeClass('header-slide-active');
+    let count = currentSlide;
+    let element = $('.header-slide')[count]
+    $(element).addClass('header-slide-active');
+  });
+  $('.news-block__btn-1').on('click', function() {
+    $('html').addClass('body-scroll');
+    $('.modal-news-1').addClass('modal-news-active');
+    $('.dark-window').addClass('dark-window-active');
+
+    iframe = $('.modal-news-1 iframe');
+    console.log(iframe)
+    iframe = iframe[0]
+    let iframe_src = $(iframe).attr('data-src');
+    $(iframe).attr('src', iframe_src);
+
+    return false;
   })
-  $('.projects-slid_3').on('click', function() {
-  	$('.projects-slider-top').slick('slickGoTo', 2);
-  	return false;
+  $('.news-block__btn-2').on('click', function() {
+    $('html').addClass('body-scroll');
+    $('.modal-news-2').addClass('modal-news-active');
+    $('.dark-window').addClass('dark-window-active');
+    return false;
   })
-  $('#ipt-file').on('change', function() {
-  	let file = $('#ipt-file')[0].files[0]
-  	if (file){
-  	  $('.ipt-label-text')[0].innerHTML = file.name;
-  	}
+  $('.news-block__btn-3').on('click', function() {
+    $('html').addClass('body-scroll');
+    $('.modal-news-3').addClass('modal-news-active');
+    $('.dark-window').addClass('dark-window-active');
+
+    iframe = $('.modal-news-3 iframe');
+    console.log(iframe)
+    iframe = iframe[0]
+    let iframe_src = $(iframe).attr('data-src');
+    $(iframe).attr('src', iframe_src);
+
+    return false;
   })
-  $('#select-request').selectize({
-    create: false,
-    sortField: 'text'
-	});
-  new WOW().init();
-  function slickify(){
-    $('.documents-row').slick({
-  	  infinite: true,
-  	  slidesToShow: 1,
-  	  slidesToScroll: 1,
-  	  dots: true,
-  	  centerMode: true,
-  	  variableWidth: true,
-  	  prevArrow: $('.dc_l'),
-  	  nextArrow: $('.dc_r')
-    });
-  }
-  let $windowWidth = window.innerWidth;
-  if ($windowWidth < 992) {
-      slickify();   
-  }
-  $('.clients-slider').slick({
-	  infinite: true,
-	  slidesToShow: 4,
-	  slidesToScroll: 1,
-	  dots: true,
-	  prevArrow: $('.prt_l'),
-	  nextArrow: $('.prt_r'),
-	  responsive: [
-	      {
-	        breakpoint: 992,
-	        settings: {
-	          centerMode: true,
-	          variableWidth: true,
-	          dots: true,
-	        }
-	      }
-	      // You can unslick at a given breakpoint now by adding:
-	      // settings: "unslick"
-	      // instead of a settings object
-	    ]
+  $('.news-block__btn-4').on('click', function() {
+    $('html').addClass('body-scroll');
+    $('.modal-news-4').addClass('modal-news-active');
+    $('.dark-window').addClass('dark-window-active');
+
+    iframe = $('.modal-news-4 iframe');
+    console.log(iframe)
+    iframe = iframe[0]
+    let iframe_src = $(iframe).attr('data-src');
+    $(iframe).attr('src', iframe_src);
+
+    return false;
+  })
+  $('.modal-news-close').on('click', function() {
+    $('html').removeClass('body-scroll');
+    $('.modal-news-wrapper').removeClass('modal-news-active');
+    $('.dark-window').removeClass('dark-window-active');
+    return false;
+  })
+  $(document).click( function(e){
+      if ( $(e.target).closest('.modal-news').length ) {
+          // клик внутри элемента 
+          return;
+      }
+      $('html').removeClass('body-scroll');
+      $('.modal-news-wrapper').removeClass('modal-news-active');
+      $('.dark-window').removeClass('dark-window-active');
   });
 });
