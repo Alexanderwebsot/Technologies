@@ -9,6 +9,12 @@ $(document).ready(function () {
     $('.modal-window').removeClass('modal-window-active');
     return false;
   })
+  $(".scroll-nav").on("click", 'a', function (event) {
+    event.preventDefault();
+    let id  = $(this).attr('href'),
+    top = $(id).offset().top;
+    $('body,html').animate({scrollTop: top}, 1500);
+  });
   $('.header-slider-top').slick({
       infinite: false,
       slidesToShow: 1,
