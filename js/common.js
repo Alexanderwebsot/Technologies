@@ -56,6 +56,13 @@ $(document).ready(function () {
 
     return false;
   })
+  $('.contacts-politic').on('click', function() {
+    $('html').addClass('body-scroll');
+    $('.modal-news-5').addClass('modal-news-active');
+    $('.dark-window').addClass('dark-window-active');
+    return false;
+  })
+  
   $('.news-block__btn-2').on('click', function() {
     $('html').addClass('body-scroll');
     $('.modal-news-2').addClass('modal-news-active');
