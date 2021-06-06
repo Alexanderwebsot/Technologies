@@ -9,6 +9,7 @@ $(document).ready(function () {
     $('.modal-window').removeClass('modal-window-active');
     return false;
   })
+  new WOW().init();
   $(".scroll-nav").on("click", 'a', function (event) {
     event.preventDefault();
     let id  = $(this).attr('href'),
