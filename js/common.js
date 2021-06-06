@@ -5,12 +5,19 @@ $(document).ready(function () {
   $('.contacts-memo-img').on('click', function() {
     $('.modal-window').addClass('modal-window-active');
   })
+  $('.burger-menu').on('click', function() {
+    $('.modal-menu').addClass('modal-menu-active');
+  })
+  $('.modal-menu-close').on('click', function() {
+    $('.modal-menu').removeClass('modal-menu-active');
+  })
   $('.modal-window__btn').on('click', function() {
     $('.modal-window').removeClass('modal-window-active');
     return false;
   })
   new WOW().init();
   $(".scroll-nav").on("click", 'a', function (event) {
+    $('.modal-menu').removeClass('modal-menu-active');
     event.preventDefault();
     let id  = $(this).attr('href'),
     top = $(id).offset().top;
